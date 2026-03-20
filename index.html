@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+    PAGE TITLE
+  ============================================================ -->
+  <title>Lewis Leruso — Software Engineer</title>
+
+  <!-- ============================================================
+    FONTS
+    Using IBM Plex Mono (headings / accents) + IBM Plex Sans (body).
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+  <!-- ============================================================
+    NAVIGATION BAR
+  ============================================================ -->
+  <nav>
+    <span class="nav-logo">LERUSO.dev</span>
+
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#blog">blog</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ============================================================
+    SECTION 1 — HERO
+  ============================================================ -->
+  <section id="hero">
+    <div class="container hero-content">
+
+      
+      <p class="hero-greeting">hello, I'm</p>
+      <h1 class="hero-name">Lewis Leruso</h1>
+      <p class="hero-title">Software Engineer</p>
+
+      <p class="hero-tagline">
+        I build reliable, well-crafted software.
+        Interested in backend systems, developer tooling, and clean APIs.
+      </p>
+
+      <!-- Call-to-action buttons -->
+      <div class="hero-cta">
+        
+        <a href="#projects" class="btn btn-primary">View my work</a>
+        <a href="#contact" class="btn btn-secondary">Get in touch</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    SECTION 2 — ABOUT
+  ============================================================ -->
+  <section id="about">
+    <div class="container reveal">
+
+      <span class="section-index"> 01</span>
+      <h2 style="font-size: 2rem; margin-bottom: var(--space-lg);">About me</h2>
+
+      <div class="about-grid">
+
+        <!-- Photo column -->
+        <img src="Images/image2.jpg" alt="lewis" style="width:100%; border-radius: var(--radius);" />
+
+        <!-- Text column -->
+        <div class="about-text">
+
+          <!-- Paragraph 1 -->
+          <p>
+            I'm a software engineer based in Kisii. I have 2 years of experience building
+            web applications, APIs, mobile apps and video games. I got into programming
+            because I liked solving puzzles and I built a small tool for myself.
+          </p>
+
+          <!-- Paragraph 2 -->
+          <p>
+            My current focus is on backend engineering and AI.
+            I care about writing code that is readable and maintainable, not just code that works.
+            I enjoy designing clean APIs, optimising database queries,
+            working on open source tools.
+          </p>
+
+          <!-- Paragraph 3 -->
+          <p>
+            Outside of work I read a lot, playing chess and other video games and I like to watching movies. 
+            I also enjoy running and going for long walks, it's a great way to clear my head and get new ideas.
+            I'm always open to interesting conversations and collaboration.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    SECTION 3 — SKILLS
+  ============================================================ -->
+  <section id="skills">
+    <div class="container reveal">
+
+      <span class="section-index"> 02</span>
+      <h2 style="font-size: 2rem; margin-bottom: var(--space-xs);">Skills</h2>
+      <p style="margin-bottom: 0;">Technologies and tools I work with regularly.</p>
+
+      <div class="skills-grid">
+
+        <!-- Skill Category 1 -->
+        <div class="skill-category">
+          <p class="skill-category-title">Languages</p>
+          <ul class="skill-list">
+            <li>Python</li>
+            <li>JavaScript</li>
+            <li>Java</li>
+            <li>SQL</li>
+          </ul>
+        </div>
+
+        <!-- Skill Category 2 -->
+        <div class="skill-category">
+          <p class="skill-category-title">Frameworks</p>
+          <ul class="skill-list">
+            <li>Node.js / Express</li>
+            <li>React</li>
+            <li>FastAPI</li>
+            <li>Next.js</li>
+          </ul>
+        </div>
+
+        <!-- Skill Category 3 -->
+        <div class="skill-category">
+          <p class="skill-category-title">Infrastructure</p>
+          <ul class="skill-list">
+            <li>PostgreSQL</li>
+            <li>Redis</li>
+            <li>Docker</li>
+            <li>AWS / GCP</li>
+          </ul>
+        </div>
+
+        <!-- Skill Category 4 — add more categories if you need them -->
+        <div class="skill-category">
+          <p class="skill-category-title">Tooling</p>
+          <ul class="skill-list">
+            <li>Git</li>
+            <li>Linux</li>
+            <li>CI/CD </li>
+            <li>REST / GraphQL</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    SECTION 4 — WORK EXPERIENCE
+  ============================================================ -->
+  <section id="experience">
+    <div class="container reveal">
+
+      <span class="section-index"> 03</span>
+      <h2 style="font-size: 2rem; margin-bottom: var(--space-md);">Experience</h2>
+
+      <div class="experience-list">
+
+        <!-- Job 1 (most recent) -->
+        <div class="experience-item">
+          <div class="experience-meta">
+            <span class=""></span>
+            <!-- Date format: Month Year — Month Year, or "Present" -->
+            Jan 2023 — Present<br />
+            KISII
+          </div>
+          <div>
+            <p class="experience-role">Software Engineer</p>
+            <p class="experience-desc">
+              
+            </p>
+            <!-- List the main technologies you used in this role -->
+            <div class="experience-tags">
+              <span class="tag">Python</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Docker</span>
+              <span class="tag">[Tech used]</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="experience-item">
+          <div class="experience-meta">
+            <span class=""></span>
+            Jun 2021 — Dec 2022<br />
+            KISII
+          </div>
+          <div>
+            <p class="experience-role">Junior Software Engineer</p>
+            <p class="experience-desc">
+              
+            </p>
+            <div class="experience-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">[Tech used]</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add more experience items by copying the block above -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    SECTION 5 — PROJECTS
+  ============================================================ -->
+  <section id="projects">
+    <div class="container reveal">
+
+      <span class="section-index"> 04</span>
+      <h2 style="font-size: 2rem; margin-bottom: var(--space-xs);">Projects</h2>
+      <p style="margin-bottom: 0;">Things I've built.</p>
+
+      <div class="projects-grid">
+
+        <!-- Project Card 1 -->
+        <div class="project-card">
+          <img src="Images/Screenshot (38).png" alt="Project One screenshot" style="width:100%; display:block;" />
+
+          <div class="project-body">
+            <p class="project-title">Product Traceability website</p>
+            <p class="project-desc">
+              A web application that allows users to track the origin and journey of products
+              through a supply chain. Built with React, Node.js, and PostgreSQL.
+            </p>
+            <div class="experience-tags">
+              <span class="tag">[React]</span>
+              <span class="tag">[Node.js]</span>
+              <span class="tag">[PostgreSQL]</span>
+            </div>
+            <div class="project-links">
+              <!-- <a href="#" class="project-link">Live demo</a> -->
+              <a href="https://github.com/rusoweb/Traceability-site.git" class="project-link">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="project-card">
+          <img src="Images/Screenshot (40).png" alt="Project One screenshot" style="width:100%; display:block;" />
+          <div class="project-body">
+            <p class="project-title">AI gun detector</p>
+            <p class="project-desc">
+              A machine learning model that can detect the presence of guns in images and videos.
+              Built with Python, TensorFlow, and OpenCV.
+            </p>
+            <div class="experience-tags">
+              <span class="tag">[Python]</span>
+              <span class="tag">[TensorFlow]</span>
+              <span class="tag">[OpenCV]</span>
+            </div>
+            <div class="project-links">
+              <!--<a href="#" class="project-link">Live demo</a> -->
+              <a href="https://github.com/rusoweb/gun-detection-ai.git" class="project-link">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="project-card">
+          <img src="Images/Screenshot (39).png" alt="Project One screenshot" style="width:100%; display:block;" />
+          <div class="project-body">
+            <p class="project-title">Attachment portal</p>
+            <p class="project-desc">
+              A web application that allows students in an university be tracked while being on attachment.
+              Built with React, Node.js, and PostgreSQL.
+            </p>
+            <div class="experience-tags">
+              <span class="tag">[React]</span>
+              <span class="tag">[Node.js]</span>
+              <span class="tag">[PostgreSQL]</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">GitHub</a>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!-- To add more projects, copy a project-card block above -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    SECTION 6 — BLOG
+  ============================================================ -->
+  <section id="blog">
+    <div class="container reveal">
+
+      <span class="section-index"> 05</span>
+      <h2 style="font-size: 2rem; margin-bottom: var(--space-xs);">Writing</h2>
+      <p style="margin-bottom: var(--space-md);">Thoughts on software, engineering, and things I'm learning.</p>
+
+      <div class="blog-list">
+
+        <!-- Blog Post 1 (most recent) -->
+        <a href="#" class="blog-post">
+          <span class="blog-post-title">Vibe coding</span>
+          <span class="blog-post-date">Mar 2025</span>
+        </a>
+
+        <!-- Blog Post 2 -->
+        <a href="#" class="blog-post">
+          <span class="blog-post-title">Game dev roadmap</span>
+          <span class="blog-post-date">Jan 2026</span>
+        </a>
+
+        <!-- Blog Post 3 -->
+        <a href="#" class="blog-post">
+          <span class="blog-post-title">Backend dev</span>
+          <span class="blog-post-date">Nov 2024</span>
+        </a>
+
+        <!-- Add more posts by copying the <a class="blog-post"> block -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    SECTION 7 — CONTACT
+  ============================================================ -->
+  <section id="contact">
+    <div class="container reveal">
+
+      <span class="section-index"> 06</span>
+
+      <h2 class="contact-heading">Let's talk.</h2>
+
+      <!-- A brief, warm invite. Don't overthink this. -->
+      <p class="contact-sub">
+        I'm open to new opportunities, collaborations, and interesting conversations.
+        My inbox is open — reach out.
+      </p>
+
+      <div class="contact-links">
+        <!-- Replace the href values with your real links -->
+        <a href="mailto:lewisleruso3@email.com" class="contact-link">lewisleruso3@email.com</a>
+        <a href="https://github.com/rusoweb" target="_blank" class="contact-link">GitHub</a>
+        <a href="https://linkedin.com/in/lewis-leruso-2aa533253" target="_blank" class="contact-link">LinkedIn</a>
+        <a href="/cv.pdf" target="_blank" class="contact-link">Download CV</a>
+
+        <!-- Optional extras — uncomment if you use them:
+        <a href="https://twitter.com/yourhandle" target="_blank" class="contact-link">Twitter</a>
+        -->
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+    FOOTER
+  ============================================================ -->
+  <footer>
+    <p>Built by Lewis Leruso &mdash; 2026</p>
+  </footer>
+<script src="index.js"></script>
+
+</body>
+</html>

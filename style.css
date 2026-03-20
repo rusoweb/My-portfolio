@@ -1,0 +1,728 @@
+
+    /* ============================================================
+      CSS CUSTOM PROPERTIES (Design Tokens)
+      All colors, fonts, and spacing live here.
+      Edit these to retheme the whole site at once.
+    ============================================================ */
+    :root {
+      /* --- Colors --- */
+      --bg-base:      #08090d;   /* Main page background */
+      --bg-surface:   #0f1117;   /* Cards and section backgrounds */
+      --bg-elevated:  #161a24;   /* Hover states, elevated cards */
+      --border:       #1e2433;   /* Subtle borders */
+      --border-light: #2a3347;   /* Visible borders on hover */
+
+      --text-primary:   #e8eaf0; /* Main readable text */
+      --text-secondary: #7a8499; /* Muted descriptions, dates */
+      --text-dim:       #3d4558; /* Very quiet text, placeholders */
+
+      /* --- Accent (change this to your preferred color) ---
+         Current: cyan-green (#00e5a0) — techy, readable on dark bg.
+         Alternatives to try:
+           Electric blue:  #00aaff
+           Warm amber:     #f5a623
+           Pure cyan:      #00d4ff
+      */
+      --accent:       #00e5a0;
+      --accent-dim:   rgba(0, 229, 160, 0.08);
+      --accent-glow:  rgba(0, 229, 160, 0.15);
+
+      /* --- Typography --- */
+      --font-mono: 'IBM Plex Mono', monospace;  /* Headings, labels, code */
+      --font-sans: 'IBM Plex Sans', sans-serif; /* Body text, paragraphs */
+
+      /* --- Spacing scale --- */
+      --space-xs:  0.5rem;
+      --space-sm:  1rem;
+      --space-md:  2rem;
+      --space-lg:  4rem;
+      --space-xl:  8rem;
+
+      /* --- Layout --- */
+      --max-width: 900px;
+      --radius:    6px;
+
+      /* --- Transitions --- */
+      --transition: 0.2s ease;
+    }
+
+    /* ============================================================
+      RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
+      /* Subtle grid texture — gives depth to the dark background */
+      background-image:
+        linear-gradient(rgba(0, 229, 160, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 160, 0.015) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ============================================================
+      SCROLLBAR STYLING (Chrome / Edge)
+    ============================================================ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+
+    /* ============================================================
+      TYPOGRAPHY SYSTEM
+    ============================================================ */
+    h1, h2, h3, h4 {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 60ch; /* Keeps paragraphs readable — don't go too wide */
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+
+    a:hover { opacity: 0.75; }
+
+    /* Monospace label / tag style */
+    .label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* Section index numbers (01, 02, etc.) */
+    .section-index {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: var(--space-xs);
+    }
+
+    /* ============================================================
+      LAYOUT UTILITIES
+    ============================================================ */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    section {
+      padding: var(--space-xl) 0;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ============================================================
+      SCROLL REVEAL ANIMATION
+      Sections fade up as they enter the viewport.
+      Controlled by the IntersectionObserver in the JS at the bottom.
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+      NAVIGATION
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* Frosted glass effect */
+      background: rgba(8, 9, 13, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-md);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ============================================================
+      HERO SECTION
+    ============================================================ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      border-top: none;
+      padding-top: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Radial accent glow behind the hero text */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-greeting {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* The blinking cursor animation on the greeting */
+    .hero-greeting::after {
+      content: '_';
+      animation: blink 1.1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    .hero-name {
+      /* ============================================================
+        YOUR NAME
+        Change font size here if your name is very long or very short.
+        Current: 4.5rem. You can go up to 6rem for short names.
+      ============================================================ */
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-sm);
+      color: var(--text-primary);
+    }
+
+    .hero-title {
+      font-family: var(--font-mono);
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 48ch;
+      margin-bottom: var(--space-lg);
+      font-weight: 300;
+    }
+
+    /* CTA Buttons */
+    .hero-cta {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all var(--transition);
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg-base);
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-light);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    /* ============================================================
+      ABOUT SECTION
+    ============================================================ */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    /* ============================================================
+      PHOTO PLACEHOLDER
+      Replace the .about-photo-placeholder div with an <img> tag:
+        <img src="your-photo.jpg" alt="Your Name" class="about-photo" />
+      Then style .about-photo with the same width/border-radius.
+    ============================================================ */
+    .about-photo-placeholder {
+      aspect-ratio: 3 / 4;
+      background: var(--bg-surface);
+      border: 1px dashed var(--border-light);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    .about-photo-placeholder span:first-child {
+      font-size: 1.5rem;
+      color: var(--text-dim);
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .about-text p {
+      margin-bottom: var(--space-sm);
+    }
+
+    /* ============================================================
+      SKILLS SECTION
+    ============================================================ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .skill-category {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-md);
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .skill-category:hover {
+      border-color: var(--border-light);
+      background: var(--bg-elevated);
+    }
+
+    .skill-category-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-sm);
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .skill-list li {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* The small accent dot before each skill */
+    .skill-list li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+
+    /* ============================================================
+      EXPERIENCE SECTION
+    ============================================================ */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color var(--transition);
+    }
+
+    .experience-item:hover {
+      border-color: var(--border-light);
+    }
+
+    .experience-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .experience-meta .company {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.8rem;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .experience-role {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-xs);
+    }
+
+    .experience-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      max-width: none;
+    }
+
+    /* Tags for tech used in each role */
+    .experience-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: var(--space-sm);
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(0, 229, 160, 0.15);
+    }
+
+    /* ============================================================
+      PROJECTS SECTION
+    ============================================================ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .project-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    /* ============================================================
+      PROJECT SCREENSHOT PLACEHOLDER
+      Replace .project-image-placeholder with an <img> tag.
+      Recommended image size: 600x340px (16:9 ratio).
+    ============================================================ */
+    .project-image-placeholder {
+      aspect-ratio: 16 / 9;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    .project-body {
+      padding: var(--space-md);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-title {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-xs);
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      max-width: none;
+      flex: 1;
+      margin-bottom: var(--space-sm);
+    }
+
+    .project-links {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: auto;
+    }
+
+    .project-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-light);
+      padding: 0.3rem 0.7rem;
+      border-radius: 3px;
+      transition: all var(--transition);
+    }
+
+    .project-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      opacity: 1;
+    }
+
+    /* ============================================================
+      BLOG SECTION
+    ============================================================ */
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px; /* Creates a thin line separator between posts */
+      margin-top: var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .blog-post {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg-surface);
+      transition: background var(--transition);
+    }
+
+    .blog-post:hover {
+      background: var(--bg-elevated);
+    }
+
+    .blog-post-title {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      transition: color var(--transition);
+    }
+
+    .blog-post:hover .blog-post-title {
+      color: var(--accent);
+    }
+
+    .blog-post-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+      CONTACT SECTION
+    ============================================================ */
+    #contact {
+      text-align: center;
+    }
+
+    #contact .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-heading {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: var(--space-sm);
+    }
+
+    .contact-sub {
+      max-width: 46ch;
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .contact-link {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-light);
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius);
+      transition: all var(--transition);
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    /* ============================================================
+      FOOTER
+    ============================================================ */
+    footer {
+      padding: var(--space-md);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      max-width: none;
+    }
+
+    /* ============================================================
+      RESPONSIVE — MOBILE ADJUSTMENTS
+      Breakpoint: 680px (phones and small tablets)
+    ============================================================ */
+    @media (max-width: 680px) {
+      nav { padding: var(--space-sm); }
+
+      .nav-links {
+        gap: var(--space-sm);
+      }
+
+      .nav-links li:nth-child(n+4) {
+        /* Hide excess nav links on small screens to avoid overflow */
+        display: none;
+      }
+
+      #about .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-photo-placeholder {
+        aspect-ratio: 1 / 1; /* Square on mobile */
+        max-width: 200px;
+      }
+
+      .experience-item {
+        grid-template-columns: 1fr;
+      }
+    }
+  
