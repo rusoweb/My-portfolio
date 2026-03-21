@@ -51,3 +51,26 @@
     );
 
     sections.forEach((section) => navObserver.observe(section));
+
+// Hamburger menu toggle
+const hamburger   = document.getElementById('hamburger');
+const navDropdown = document.getElementById('nav-dropdown');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = navDropdown.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+});
+
+function closeMenu() {
+  navDropdown.classList.remove('open');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-label', 'Open menu');
+}
+
+// Close menu when tapping outside of it
+document.addEventListener('click', (e) => {
+  if (!navDropdown.contains(e.target) && !hamburger.contains(e.target)) {
+    closeMenu();
+  }
+});

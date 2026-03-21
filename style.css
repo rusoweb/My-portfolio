@@ -700,29 +700,69 @@
       RESPONSIVE — MOBILE ADJUSTMENTS
       Breakpoint: 680px (phones and small tablets)
     ============================================================ */
-    @media (max-width: 680px) {
-      nav { padding: var(--space-sm); }
+ /* Hamburger button — hidden on desktop */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 110;
+}
 
-      .nav-links {
-        gap: var(--space-sm);
-      }
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-secondary);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  transform-origin: center;
+}
 
-      .nav-links li:nth-child(n+4) {
-        /* Hide excess nav links on small screens to avoid overflow */
-        display: none;
-      }
+/* Bars animate into an X when menu is open */
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-      #about .about-grid {
-        grid-template-columns: 1fr;
-      }
+/* Mobile dropdown panel */
+.nav-dropdown {
+  display: none;
+  position: fixed;
+  top: 57px;
+  left: 0;
+  right: 0;
+  background: rgba(8, 9, 13, 0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 99;
+  padding: 1rem 2rem 2rem;
+}
 
-      .about-photo-placeholder {
-        aspect-ratio: 1 / 1; /* Square on mobile */
-        max-width: 200px;
-      }
+.nav-dropdown.open { display: flex; flex-direction: column; }
 
-      .experience-item {
-        grid-template-columns: 1fr;
-      }
-    }
-  
+.nav-dropdown a {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: color var(--transition);
+}
+
+.nav-dropdown a:last-child { border-bottom: none; }
+.nav-dropdown a:hover { color: var(--accent); }
+
+@media (max-width: 680px) {
+  nav { padding: 1rem; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  #about .about-grid { grid-template-columns: 1fr; }
+  .about-photo-placeholder { aspect-ratio: 1/1; max-width: 200px; }
+  .experience-item { grid-template-columns: 1fr; }
+}

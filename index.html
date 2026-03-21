@@ -28,18 +28,34 @@
   <!-- ============================================================
     NAVIGATION BAR
   ============================================================ -->
-  <nav>
-    <span class="nav-logo">LERUSO.dev</span>
+ <nav>
+  <span class="nav-logo">LERUSO.dev</span>
 
-    <ul class="nav-links">
-      <li><a href="#about">about</a></li>
-      <li><a href="#skills">skills</a></li>
-      <li><a href="#experience">experience</a></li>
-      <li><a href="#projects">projects</a></li>
-      <li><a href="#blog">blog</a></li>
-      <li><a href="#contact">contact</a></li>
-    </ul>
-  </nav>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#blog">blog</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- Mobile dropdown — place this immediately after the closing </nav> tag -->
+<div class="nav-dropdown" id="nav-dropdown">
+  <a href="#about"      onclick="closeMenu()">about</a>
+  <a href="#skills"     onclick="closeMenu()">skills</a>
+  <a href="#experience" onclick="closeMenu()">experience</a>
+  <a href="#projects"   onclick="closeMenu()">projects</a>
+  <a href="#blog"       onclick="closeMenu()">blog</a>
+  <a href="#contact"    onclick="closeMenu()">contact</a>
+</div>
 
 
   <!-- ============================================================
